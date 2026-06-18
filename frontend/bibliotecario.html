@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel do Bibliotecário</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <strong>Biblioteca — Painel do Bibliotecário</strong>
+    <span id="nome-usuario"></span>
+    <button type="button" onclick="sair()">Sair</button>
+  </header>
+
+  <main>
+    <section>
+      <h2>Cadastrar Livro</h2>
+      <p id="msg-livro" class="msg"></p>
+      <div class="form-inline">
+        <input type="text" id="titulo" placeholder="Título">
+        <input type="text" id="autor" placeholder="Autor">
+        <input type="number" id="ano" placeholder="Ano" min="1000" max="2099">
+        <input type="number" id="qtd" placeholder="Qtd disponível" min="0">
+        <button type="button" onclick="salvarLivro()">Salvar</button>
+      </div>
+      <input type="hidden" id="livro-id">
+    </section>
+
+    <section>
+      <h2>Livros Cadastrados</h2>
+      <table id="tabela-livros">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Ano</th>
+            <th>Disponível</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Empréstimos</h2>
+      <table id="tabela-emprestimos">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Leitor</th>
+            <th>Livro</th>
+            <th>Empréstimo</th>
+            <th>Devolução prevista</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/bibliotecario.js"></script>
+</body>
+</html>

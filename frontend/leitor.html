@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área do Leitor</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <strong>Biblioteca — Área do Leitor</strong>
+    <span id="nome-usuario"></span>
+    <button type="button" onclick="sair()">Sair</button>
+  </header>
+
+  <main>
+    <section>
+      <h2>Catálogo de Livros</h2>
+      <p id="msg-emprestimo" class="msg"></p>
+      <table id="tabela-livros">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Ano</th>
+            <th>Disponível</th>
+            <th>Devolução prevista</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Meus Empréstimos</h2>
+      <p id="msg-devolucao" class="msg"></p>
+      <table id="tabela-meus">
+        <thead>
+          <tr>
+            <th>Livro</th>
+            <th>Empréstimo</th>
+            <th>Devolução prevista</th>
+            <th>Status</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/leitor.js"></script>
+</body>
+</html>

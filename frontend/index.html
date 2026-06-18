@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca - Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Sistema de Biblioteca</h1>
+
+    <div id="sec-login">
+      <h2>Entrar</h2>
+      <p id="msg-login" class="msg"></p>
+      <form id="form-login">
+        <input type="email" id="login-email" placeholder="E-mail" required>
+        <input type="password" id="login-senha" placeholder="Senha" required>
+        <button type="submit">Entrar</button>
+      </form>
+      <p class="link">Não tem conta? <a onclick="trocar('sec-cadastro', 'sec-login')">Cadastre-se</a></p>
+    </div>
+
+    <div id="sec-cadastro" class="oculto">
+      <h2>Cadastro</h2>
+      <p id="msg-cadastro" class="msg"></p>
+      <form id="form-cadastro">
+        <input type="text" id="cad-nome" placeholder="Nome completo" required>
+        <input type="email" id="cad-email" placeholder="E-mail" required>
+        <input type="password" id="cad-senha" placeholder="Senha" required>
+        <select id="cad-perfil" title="Perfil">
+          <option value="leitor">Leitor</option>
+          <option value="bibliotecario">Bibliotecário</option>
+        </select>
+        <button type="submit">Cadastrar</button>
+      </form>
+      <p class="link">Já tem conta? <a onclick="trocar('sec-login', 'sec-cadastro')">Entrar</a></p>
+    </div>
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

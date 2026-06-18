@@ -1,15 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const mysql = require('mysql2/promise');
-require('dotenv').config();
-
-const db = mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-});
+const db = require('../db');
 
 router.post('/cadastro', async (req, res) => {
   const { nome, email, senha, perfil } = req.body;
@@ -24,6 +16,7 @@ router.post('/cadastro', async (req, res) => {
     );
     res.status(201).json({ mensagem: 'Usuário cadastrado com sucesso.' });
   } catch (err) {
+    console.error('ERRO cadastro:', err.message);
     if (err.code === 'ER_DUP_ENTRY') {
       return res.status(409).json({ erro: 'E-mail já cadastrado.' });
     }
@@ -42,8 +35,8 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ erro: 'E-mail ou senha inválidos.' });
     }
     const usuario = rows[0];
-    const senhaCorreta = await bcrypt.compare(senha, usuario.senha);
-    if (!senhaCorreta) {
+    const ok = await bcrypt.compare(senha, usuario.senha);
+    if (!ok) {
       return res.status(401).json({ erro: 'E-mail ou senha inválidos.' });
     }
     res.json({
@@ -51,6 +44,7 @@ router.post('/login', async (req, res) => {
       usuario: { id: usuario.id, nome: usuario.nome, perfil: usuario.perfil },
     });
   } catch (err) {
+    console.error('ERRO login:', err.message);
     res.status(500).json({ erro: 'Erro ao realizar login.' });
   }
 });
